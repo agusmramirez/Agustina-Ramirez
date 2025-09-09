@@ -5,247 +5,143 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Blog - Rock Nacional</title>
   <style>
-    /* --- Paleta --- */
     :root{
-      --celeste-1: #74c2e1;   /* celeste medio */
-      --celeste-2: #bfeaf9;   /* celeste pálido */
+      --celeste-1: #74c2e1;
+      --celeste-2: #bfeaf9;
       --blanco: #ffffff;
-      --marron-1: #704428;    /* marrón oscuro */
-      --marron-2: #a9745a;    /* marrón suave */
-      --gris-1: #f5f5f5;
+      --marron-1: #704428;
+      --marron-2: #a9745a;
       --negro-trans: rgba(0,0,0,0.08);
-      --acento: #ffd54a;      /* amarillo solcito (sutil) */
+      --acento: #ffd54a;
       --max-width: 980px;
     }
-
-    /* --- Reset ligero --- */
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
     body{
-      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background:
-        linear-gradient(180deg,var(--celeste-2) 0%, rgba(255,255,255,0.6) 40%),
-        radial-gradient(circle at 10% 10%, rgba(255,255,255,0.6), transparent 20%);
-      color: #222;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg,var(--celeste-2) 0%, rgba(255,255,255,0.6) 40%);
       padding:40px 20px;
       display:flex;
       justify-content:center;
-      align-items:flex-start;
-      gap:24px;
     }
-
-    /* --- Contenedor central --- */
     .wrap{
       width:100%;
       max-width:var(--max-width);
-      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.92));
+      background: rgba(255,255,255,0.95);
       border-radius:18px;
       box-shadow: 0 12px 30px var(--negro-trans);
       padding:28px;
-      border: 1px solid rgba(112,68,40,0.06);
     }
-
-    /* --- Cabecera estilo argentino y urbana --- */
+    /* Encabezado */
     header.site-header{
-      display:flex;
-      align-items:center;
-      gap:18px;
       margin-bottom:20px;
-    }
-    .brand{
-      display:flex;
-      gap:12px;
-      align-items:center;
+      text-align:center;
     }
     .flag-badge{
-      width:56px;height:36px;border-radius:6px;
+      display:inline-block;
+      width:60px;height:36px;border-radius:6px;
       background:
         linear-gradient(180deg, var(--celeste-1) 0 33%, var(--blanco) 33% 66%, var(--celeste-1) 66% 100%);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08), inset 0 -2px 0 rgba(0,0,0,0.02);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
-      color: var(--marron-1);
-      border: 2px solid rgba(112,68,40,0.06);
-      position:relative;
-      overflow:hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      margin-bottom:10px;
     }
-    .flag-badge::after{
-      /* sol estilizado (sutil) */
-      content:'';
-      position:absolute;
-      right:-8px; top:-8px;
-      width:26px;height:26px;
-      background: radial-gradient(circle at 30% 30%, var(--acento), rgba(255,215,0,0.0) 50%);
-      transform: rotate(12deg);
-      opacity:0.95;
-      border-radius:50%;
-    }
-    hgroup h1{
-      font-size:20px;
-      letter-spacing:0.2px;
+    header h1{
       color:var(--marron-1);
+      font-size:26px;
+      margin-bottom:4px;
     }
-    hgroup p{
-      font-size:13px;
+    header p{
+      font-size:15px;
       color:#5b463e;
-      opacity:0.9;
+      margin-bottom:12px;
     }
-
-    /* --- Lista de posts / tarjeta --- */
+    .blog-button{
+      background: var(--marron-2);
+      color:white;
+      border:none;
+      border-radius:12px;
+      padding:10px 18px;
+      font-size:14px;
+      cursor:pointer;
+      transition: background .2s ease;
+    }
+    .blog-button:hover{
+      background: var(--marron-1);
+    }
+    /* Posts */
     .posts{
       display:grid;
-      grid-template-columns: 1fr;
+      grid-template-columns:1fr;
       gap:18px;
     }
-
     .post{
-      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(250,245,242,0.9));
+      background: rgba(250,245,242,0.9);
       border-radius:12px;
       padding:18px;
-      border: 1px solid rgba(112,68,40,0.06);
       box-shadow: 0 8px 18px rgba(0,0,0,0.04);
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
-      position:relative;
-      overflow:hidden;
       transition:transform .22s ease, box-shadow .22s ease;
     }
-    .post:hover{
-      transform: translateY(-6px);
-      box-shadow: 0 18px 36px rgba(0,0,0,0.09);
+    .post:hover{transform:translateY(-4px);}
+    .post img{
+      width:100%;
+      max-height:200px;
+      object-fit:cover;
+      border-radius:10px;
+      margin-bottom:12px;
     }
-
-    .post .marco{
-      min-width:8px;
-      width:8px;
-      border-radius:4px;
-      background: linear-gradient(180deg, var(--celeste-1), var(--marron-2));
-      margin-right:12px;
-    }
-
     .post h2{
       color:var(--marron-1);
-      font-size:18px;
       margin-bottom:6px;
-      letter-spacing:0.2px;
     }
-
     .meta{
       font-size:13px;
       color:#5b463e;
       margin-bottom:10px;
     }
-
-    .post p{
-      color:#2b2b2b;
-      font-size:15px;
-      margin-bottom:8px;
-    }
-
-    /* destacando citas, títulos de discos, etc */
-    .post em{
-      font-style:italic;
-      color: #3b2b24;
-      background: linear-gradient(90deg, rgba(183,114,80,0.08), transparent 70%);
-      padding:2px 6px;
-      border-radius:6px;
-    }
-
-    /* banda inferior con estética urbana (sutil) */
-    .post::before{
-      content:'';
-      position:absolute;
-      right:-40px;
-      bottom:-40px;
-      width:220px;height:220px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(112,68,40,0.04), transparent 30%),
-        repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0 6px, transparent 6px 12px);
-      transform:rotate(-12deg);
-      pointer-events:none;
-      opacity:0.9;
-    }
-
-    /* --- Layout responsivo: en pantallas grandes mostramos dos columnas de posts --- */
+    .post p{margin-bottom:8px;}
     @media(min-width:900px){
-      .posts{ grid-template-columns: 1fr 1fr; }
-      .brand .title-hero { font-size:20px; }
+      .posts{grid-template-columns:1fr 1fr;}
     }
-
-    /* --- Footer pequeño --- */
-    footer.site-footer{
-      margin-top:18px;
-      text-align:center;
-      color:#6a544d;
-      font-size:13px;
-      opacity:0.95;
-    }
-
-    /* accesibilidad: enlaces y foco */
-    a, button{ color:var(--marron-1) }
-    .post:focus-within{ outline: 3px solid rgba(116,194,225,0.18); border-radius:12px; }
-
   </style>
 </head>
 <body>
-  <div class="wrap" role="main">
-    <header class="site-header" aria-label="Cabecera del blog">
-      <div class="brand" aria-hidden="false">
-        <div class="flag-badge" title="Colores argentinos"></div>
-        <hgroup>
-          <h1>Historias del Rock Nacional</h1>
-          <p>Palabras, épocas y memoria — perspectiva urbana y porteña</p>
-        </hgroup>
-      </div>
+  <div class="wrap">
+    <header class="site-header">
+      <div class="flag-badge"></div>
+      <h1>Historias del Rock Nacional</h1>
+      <p>Por Agustina Ramírez, 17 años – Amante de la música argentina, comparto un poco de historia y pasión.</p>
+      <button class="blog-button" onclick="location.href='folklore.html'">Ir a mi blog de Folklore</button>
     </header>
 
-    <section class="posts" aria-label="Entradas del blog">
+    <section class="posts">
       <!-- Post 1 -->
-      <article class="post" id="post-1">
-        <div class="marco" aria-hidden="true"></div>
-        <div class="contenido">
-          <h2>El Origen del Rock Nacional</h2>
-          <p class="meta"><strong>Publicado:</strong> 9 de septiembre de 2025</p>
-          <p>El rock nacional argentino nació en los años 60 como una respuesta cultural y artística a los cambios sociales de la época. Fue un movimiento juvenil que mezcló influencias del rock anglosajón con una fuerte identidad local, convirtiéndose en una forma de expresión generacional.</p>
-          <p>Uno de los momentos fundacionales fue la aparición de <em>"La Balsa"</em> (1967), compuesta por Litto Nebbia y Tanguito, interpretada por Los Gatos. Este tema marcó el inicio de una nueva etapa en la música popular argentina.</p>
-          <p>Bandas pioneras como Almendra, Manal y Vox Dei sentaron las bases para el crecimiento de un movimiento que no pararía de expandirse durante las décadas siguientes.</p>
-        </div>
+      <article class="post">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Litto_Nebbia.jpg" alt="Litto Nebbia y Tanguito">
+        <h2>El Origen del Rock Nacional</h2>
+        <p class="meta"><strong>Publicado:</strong> 9 de septiembre de 2025</p>
+        <p>El rock nacional argentino nació en los años 60 como una respuesta cultural y artística a los cambios sociales de la época. Fue un movimiento juvenil que mezcló influencias del rock anglosajón con una fuerte identidad local.</p>
+        <p>Uno de los momentos fundacionales fue la aparición de <em>"La Balsa"</em> (1967), compuesta por Litto Nebbia y Tanguito, interpretada por Los Gatos.</p>
+        <p>Bandas pioneras como Almendra, Manal y Vox Dei sentaron las bases para el crecimiento de un movimiento que no pararía de expandirse.</p>
       </article>
 
       <!-- Post 2 -->
-      <article class="post" id="post-2">
-        <div class="marco" aria-hidden="true"></div>
-        <div class="contenido">
-          <h2>Los Años 70: Experimentación y Poesía</h2>
-          <p class="meta"><strong>Publicado:</strong> 9 de septiembre de 2025</p>
-          <p>Durante los años 70, el rock nacional atravesó una etapa de maduración artística. Bandas como Invisible, Pescado Rabioso, La Máquina de Hacer Pájaros y Sui Generis incorporaron letras introspectivas, arreglos complejos y una fuerte carga poética.</p>
-          <p>Charly García y Luis Alberto Spinetta se consolidaron como dos figuras clave del movimiento, aportando obras fundamentales como <em>"Artaud"</em> y <em>"Pequeñas anécdotas sobre las instituciones"</em>.</p>
-          <p>A pesar de la censura y la represión de la dictadura militar, el rock nacional se convirtió en un canal de resistencia simbólica y cultural.</p>
-        </div>
+      <article class="post">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Luis_Alberto_Spinetta_en_1976.png" alt="Luis Alberto Spinetta y Charly García">
+        <h2>Los Años 70: Experimentación y Poesía</h2>
+        <p class="meta"><strong>Publicado:</strong> 9 de septiembre de 2025</p>
+        <p>Durante los años 70, el rock nacional atravesó una etapa de maduración artística. Bandas como Invisible, Pescado Rabioso y Sui Generis incorporaron letras introspectivas y una fuerte carga poética.</p>
+        <p>Charly García y Luis Alberto Spinetta se consolidaron como figuras clave, aportando obras fundamentales como <em>"Artaud"</em> y <em>"Pequeñas anécdotas sobre las instituciones"</em>.</p>
+        <p>A pesar de la censura y la represión de la dictadura militar, el rock nacional se convirtió en un canal de resistencia cultural.</p>
       </article>
 
       <!-- Post 3 -->
-      <article class="post" id="post-3">
-        <div class="marco" aria-hidden="true"></div>
-        <div class="contenido">
-          <h2>Los 80: Democracia y Explosión Popular</h2>
-          <p class="meta"><strong>Publicado:</strong> 9 de septiembre de 2025</p>
-          <p>Con la llegada de la democracia en 1983, el rock argentino vivió una verdadera explosión de popularidad. Nuevas bandas emergieron con fuerza y conectaron con una juventud deseosa de libertad y renovación.</p>
-          <p>Soda Stereo, Virus, Los Abuelos de la Nada y Los Enanitos Verdes lideraron una nueva ola de rock con sonidos modernos, letras frescas y una estética innovadora.</p>
-          <p>Este período marcó la consolidación del rock nacional como un fenómeno de masas, con recitales multitudinarios y una presencia creciente en medios de comunicación.</p>
-        </div>
+      <article class="post">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Soda_Stereo_1986.jpg" alt="Soda Stereo">
+        <h2>Los 80: Democracia y Explosión Popular</h2>
+        <p class="meta"><strong>Publicado:</strong> 9 de septiembre de 2025</p>
+        <p>Con la llegada de la democracia en 1983, el rock argentino vivió una explosión de popularidad. Bandas como Soda Stereo, Virus y Los Abuelos de la Nada conectaron con una juventud deseosa de libertad.</p>
+        <p>Este período marcó la consolidación del rock nacional como un fenómeno de masas, con recitales multitudinarios y una presencia creciente en los medios.</p>
       </article>
     </section>
-
-    <footer class="site-footer" role="contentinfo">
-      <p>Hecho con cariño porteño · Paleta: celeste, blanco y marrones</p>
-    </footer>
   </div>
 </body>
 </html>
