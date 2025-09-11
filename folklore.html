@@ -1,63 +1,154 @@
 <!DOCTYPE html>
-object-fit:cover;
-border-radius:10px;
-margin-bottom:12px;
-}
-.post h2{
-color:var(--marron-1);
-margin-bottom:6px;
-}
-.meta{
-font-size:13px;
-color:#5b463e;
-margin-bottom:10px;
-}
-.post p{margin-bottom:8px;}
-@media(min-width:900px){
-.posts{grid-template-columns:1fr 1fr;}
-}
-</style>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog - Folklore Argentino</title>
+  <style>
+    :root{
+      --celeste-1: #5ab1de;   /* celeste bandera */
+      --celeste-2: #bfeaf9;   /* celeste claro */
+      --blanco: #ffffff;
+      --marron-1: #704428;    /* marrón tierra */
+      --marron-2: #a9745a;    /* marrón claro */
+      --acento: #ffd54a;      /* amarillo sol */
+      --negro-trans: rgba(0,0,0,0.08);
+      --max-width: 980px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg,var(--celeste-2) 0%, rgba(255,255,255,0.7) 40%);
+      padding:40px 20px;
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{
+      width:100%;
+      max-width:var(--max-width);
+      background: var(--blanco);
+      border-radius:20px;
+      box-shadow: 0 12px 30px var(--negro-trans);
+      padding:28px;
+      border:3px solid var(--celeste-1);
+    }
+    /* Encabezado */
+    header.site-header{
+      margin-bottom:20px;
+      text-align:center;
+    }
+    .flag-badge{
+      display:inline-block;
+      width:64px;height:40px;border-radius:6px;
+      background:
+        linear-gradient(180deg, var(--celeste-1) 0 33%, var(--blanco) 33% 66%, var(--celeste-1) 66% 100%);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom:12px;
+      border: 1px solid var(--marron-2);
+    }
+    header h1{
+      color:var(--marron-1);
+      font-size:28px;
+      margin-bottom:6px;
+    }
+    header p{
+      font-size:15px;
+      color:#4b3a2f;
+      margin-bottom:16px;
+    }
+    .blog-button{
+      background: var(--marron-2);
+      color:var(--blanco);
+      border:none;
+      border-radius:12px;
+      padding:10px 18px;
+      font-size:14px;
+      cursor:pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .blog-button:hover{
+      background: var(--marron-1);
+      transform: scale(1.04);
+    }
+    /* Posts */
+    .posts{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:20px;
+    }
+    .post{
+      background: linear-gradient(180deg,rgba(250,250,250,0.95) 0%, rgba(255,255,255,0.9) 100%);
+      border-radius:14px;
+      padding:20px;
+      border-left:6px solid var(--celeste-1);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+    .post:hover{
+      transform:translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .post img{
+      width:100%;
+      max-height:200px;
+      object-fit:cover;
+      border-radius:12px;
+      margin-bottom:12px;
+      border:2px solid var(--marron-2);
+    }
+    .post h2{
+      color:var(--marron-1);
+      margin-bottom:6px;
+    }
+    .meta{
+      font-size:13px;
+      color:var(--marron-2);
+      font-weight:bold;
+      margin-bottom:10px;
+    }
+    .post p{margin-bottom:8px;color:#3d3d3d;line-height:1.6}
+    @media(min-width:900px){
+      .posts{grid-template-columns:1fr 1fr;}
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
-<header class="site-header">
-<div class="flag-badge"></div>
-<h1>Historias del Folklore Argentino</h1>
-<p>Por Agustina Ramírez, 17 años – Descubriendo las raíces, la música y las danzas de nuestra tierra.</p>
-<button class="blog-button" onclick="location.href='index.html'">Volver al blog de Rock</button>
-</header>
+  <div class="wrap">
+    <header class="site-header">
+      <div class="flag-badge"></div>
+      <h1>Historias del Folklore Argentino</h1>
+      <p>Por Agustina Ramírez, 17 años – Descubriendo las raíces, la música y las danzas de nuestra tierra.</p>
+      <button class="blog-button" onclick="location.href='index.html'">Volver al blog de Rock</button>
+    </header>
 
+    <section class="posts">
+      <!-- Post 1 -->
+      <article class="post">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Zamba_en_Salta.jpg" alt="Pareja bailando zamba">
+        <h2>Orígenes del Folklore</h2>
+        <p class="meta"><strong>Publicado:</strong> 10 de septiembre de 2025</p>
+        <p>El folklore argentino es el resultado del encuentro de tradiciones indígenas, africanas y europeas. Sus danzas y canciones narran historias de trabajo, amor y lucha, y reflejan el espíritu comunitario de los pueblos.</p>
+        <p>Desde la milonga y la tonada hasta la chacarera y la zamba, el folklore es una memoria viva que sigue evolucionando con nuevas generaciones de músicos y bailarines.</p>
+      </article>
 
-<section class="posts">
-<!-- Post 1 -->
-<article class="post">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Zamba_en_Salta.jpg" alt="Pareja bailando zamba">
-<h2>Orígenes del Folklore</h2>
-<p class="meta"><strong>Publicado:</strong> 10 de septiembre de 2025</p>
-<p>El folklore argentino es el resultado del encuentro de tradiciones indígenas, africanas y europeas. Sus danzas y canciones narran historias de trabajo, amor y lucha, y reflejan el espíritu comunitario de los pueblos.</p>
-<p>Desde la milonga y la tonada hasta la chacarera y la zamba, el folklore es una memoria viva que sigue evolucionando con nuevas generaciones de músicos y bailarines.</p>
-</article>
+      <!-- Post 2 -->
+      <article class="post">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Zamba_Santiagueña.jpg" alt="Pañuelos de zamba">
+        <h2>La Zamba: Danza de Encuentro</h2>
+        <p class="meta"><strong>Publicado:</strong> 3 de septiembre de 2025</p>
+        <p>La zamba es una danza de pañuelo en la que dos personas se encuentran, se cortejan y se despiden. Sus pasos son pausados y elegantes, marcando el compás del bombo legüero y la guitarra criolla.</p>
+        <p>Aprender a bailarla es aprender a dialogar en movimiento, a mirar y responder, a girar en sintonía con la música.</p>
+      </article>
 
-
-<!-- Post 2 -->
-<article class="post">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Zamba_Santiagueña.jpg" alt="Pañuelos de zamba">
-<h2>La Zamba: Danza de Encuentro</h2>
-<p class="meta"><strong>Publicado:</strong> 3 de septiembre de 2025</p>
-<p>La zamba es una danza de pañuelo en la que dos personas se encuentran, se cortejan y se despiden. Sus pasos son pausados y elegantes, marcando el compás del bombo legüero y la guitarra criolla.</p>
-<p>Aprender a bailarla es aprender a dialogar en movimiento, a mirar y responder, a girar en sintonía con la música.</p>
-</article>
-
-
-<!-- Post 3 -->
-<article class="post">
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Bombo_leguero.jpg" alt="Bombo legüero y guitarra">
-<h2>Instrumentos del Folklore</h2>
-<p class="meta"><strong>Publicado:</strong> 28 de agosto de 2025</p>
-<p>Los sonidos del folklore argentino tienen como protagonistas a la guitarra criolla, el bombo legüero, el charango y la quena. Cada instrumento aporta un color único a las chacareras, vidalas y zambas.</p>
-<p>Hoy, estos instrumentos dialogan con géneros modernos, manteniendo viva la tradición y acercándola a públicos jóvenes.</p>
-</article>
-</section>
-</div>
+      <!-- Post 3 -->
+      <article class="post">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Bombo_leguero.jpg" alt="Bombo legüero y guitarra">
+        <h2>Instrumentos del Folklore</h2>
+        <p class="meta"><strong>Publicado:</strong> 28 de agosto de 2025</p>
+        <p>Los sonidos del folklore argentino tienen como protagonistas a la guitarra criolla, el bombo legüero, el charango y la quena. Cada instrumento aporta un color único a las chacareras, vidalas y zambas.</p>
+        <p>Hoy, estos instrumentos dialogan con géneros modernos, manteniendo viva la tradición y acercándola a públicos jóvenes.</p>
+      </article>
+    </section>
+  </div>
 </body>
 </html>
